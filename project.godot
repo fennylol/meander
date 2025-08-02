@@ -14,3 +14,8 @@ config/name="Meander"
 run/main_scene="res://Meander the game in which you go for a walk and something unexpected happens.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[rendering]
+
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=5
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality.mobile=5

@@ -1,0 +1,15 @@
+[gd_resource type="PanoramaSkyMaterial" load_steps=4 format=3 uid="uid://besm71yqircjo"]
+
+[sub_resource type="Gradient" id="Gradient_0vf6b"]
+offsets = PackedFloat32Array(0.406557, 1)
+colors = PackedColorArray(0.337201, 0.507417, 0.662884, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lrc6v"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o76sj"]
+seamless = true
+color_ramp = SubResource("Gradient_0vf6b")
+noise = SubResource("FastNoiseLite_lrc6v")
+
+[resource]
+panorama = SubResource("NoiseTexture2D_o76sj")

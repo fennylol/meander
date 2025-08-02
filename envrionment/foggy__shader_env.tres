@@ -1,0 +1,26 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://wp6em5kx1a13"]
+
+[ext_resource type="Material" uid="uid://besm71yqircjo" path="res://envrionment/skytex.tres" id="1_xd17j"]
+
+[sub_resource type="Sky" id="Sky_lrc6v"]
+sky_material = ExtResource("1_xd17j")
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 0.1
+sky = SubResource("Sky_lrc6v")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.25
+reflected_light_source = 2
+tonemap_mode = 2
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_use_occlusion = true
+fog_mode = 1
+fog_light_color = Color(0.501407, 0.501406, 0.501406, 1)
+fog_density = 1.0
+fog_depth_curve = 3.0
+fog_depth_begin = 28.0
+fog_depth_end = 50.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0001

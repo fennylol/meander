@@ -2,8 +2,10 @@ extends CharacterBody3D
 
 const SPEED = 2.5
 const JUMP_VELOCITY = 4.5
+var up_lim = PI/4 
 
 @onready var camera = $DEBUG_CAMERA
+@onready var fog_shader = $FogVolume
 
 var cap = false
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -33,7 +35,7 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion and cap:
 		rotate_y(-event.relative.x * .005)
 		camera.rotate_x(-event.relative.y * .005)
-		camera.rotation.x = clamp(camera.rotation.x, -PI/2, PI/2)
+		camera.rotation.x = clamp(camera.rotation.x, -PI/2, up_lim)
 
 # mouse capture
 func _process(delta):
@@ -42,6 +44,8 @@ func _process(delta):
 		cap = !cap
 		if cap:Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		else:Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	camera.rotation.x = clamp(camera.rotation.x, -PI/2, up_lim)
+	
 
 # movement
 func _physics_process(delta):
