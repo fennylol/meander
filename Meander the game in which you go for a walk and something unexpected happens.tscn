@@ -1,0 +1,473 @@
+[gd_scene load_steps=8 format=3 uid="uid://crvh2uj0lo2io"]
+
+[ext_resource type="PackedScene" uid="uid://c5wp577lftwwe" path="res://DEBUG_CHARACTER_3D/debug_character_3D.tscn" id="1_a1wa5"]
+[ext_resource type="Script" uid="uid://b1uit2ef4a4oq" path="res://DEBUG_CHARACTER_3D/debug_character_3D.gd" id="2_e1kja"]
+[ext_resource type="Texture2D" uid="uid://ytn6qyv6dcqr" path="res://grass_final1.png" id="3_0vf6b"]
+[ext_resource type="ArrayMesh" uid="uid://ymccg6yalfy7" path="res://tree/tall_pine.obj" id="4_lrc6v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nttl5"]
+albedo_texture = ExtResource("3_0vf6b")
+uv1_scale = Vector3(25, 25, 25)
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nttl5"]
+size = Vector2(200, 200)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_38t50"]
+size = Vector3(200, 0.1, 200)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DEBUG_CHARACTER_3D" parent="." instance=ExtResource("1_a1wa5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00299, 0)
+script = ExtResource("2_e1kja")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+material_override = SubResource("StandardMaterial3D_nttl5")
+mesh = SubResource("PlaneMesh_nttl5")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_38t50")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="TallPine" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.4566, 1.42221, -22.2516)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../../StaticBody3D")
+
+[node name="TallPine2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.9178, 1.4222, -14.0755)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine3" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5799, 1.4222, -25.1211)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine4" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9343, 1.4222, 17.3304)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine5" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.94508, 1.4222, 12.6221)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine6" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.3997, 1.4222, 4.19285)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine7" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.7939, 1.42221, 61.5187)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine8" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.2062, 1.42221, 74.3703)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine9" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.469133, 0, -0.883128, 0, 1, 0, 0.883128, 0, 0.469133, 73.9545, 2.84441, 0.820061)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../../StaticBody3D")
+
+[node name="TallPine10" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.469133, 0, -0.883128, 0, 1, 0, 0.883128, 0, 0.469133, 23.9397, 2.84441, -63.5866)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine11" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.469133, 0, -0.883128, 0, 1, 0, 0.883128, 0, 0.469133, 48.8651, 2.84441, -40.21)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine12" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.469133, 0, -0.883128, 0, 1, 0, 0.883128, 0, 0.469133, 14.9618, 2.84441, -13.5425)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine13" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.469133, 0, -0.883128, 0, 1, 0, 0.883128, 0, 0.469133, 28.915, 2.84441, 2.68783)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine14" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.469133, 0, -0.883128, 0, 1, 0, 0.883128, 0, 0.469133, 15.5555, 2.84441, -40.4287)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine15" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.469133, 0, -0.883128, 0, 1, 0, 0.883128, 0, 0.469133, -2.60955, 2.84441, 47.5715)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine16" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.469133, 0, -0.883128, 0, 1, 0, 0.883128, 0, 0.469133, -35.5392, 2.84441, 12.9767)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine17" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.531295, 0, 0.847187, 0, 1, 0, -0.847187, 0, -0.531295, -45.314, 1.42221, 24.6124)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../../StaticBody3D")
+
+[node name="TallPine18" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.531295, 0, 0.847187, 0, 1, 0, -0.847187, 0, -0.531295, 9.1936, 1.4222, 85.2641)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine19" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.531295, 0, 0.847187, 0, 1, 0, -0.847187, 0, -0.531295, -17.345, 1.4222, 63.7363)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine20" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.531295, 0, 0.847187, 0, 1, 0, -0.847187, 0, -0.531295, 14.5572, 1.4222, 34.7048)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine21" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.531295, 0, 0.847187, 0, 1, 0, -0.847187, 0, -0.531295, -0.524677, 1.4222, 19.5175)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine22" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.531295, 0, 0.847187, 0, 1, 0, -0.847187, 0, -0.531295, 15.8943, 1.4222, 61.5643)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine23" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.531295, 0, 0.847187, 0, 1, 0, -0.847187, 0, -0.531295, 27.6978, 1.42221, -27.5126)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine24" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.531295, 0, 0.847187, 0, 1, 0, -0.847187, 0, -0.531295, 63.0251, 1.42221, 4.63007)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine25" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.498926, 0, 0.866645, 0, 1, 0, -0.866645, 0, 0.498926, -46.6563, 2.84441, -31.8288)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../../StaticBody3D")
+
+[node name="TallPine26" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.498926, 0, 0.866645, 0, 1, 0, -0.866645, 0, 0.498926, -74.6481, 2.84441, 44.7621)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine27" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.498926, 0, 0.866645, 0, 1, 0, -0.866645, 0, 0.498926, -68.0865, 2.84441, 11.2257)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine28" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.498926, 0, 0.866645, 0, 1, 0, -0.866645, 0, 0.498926, -27.4816, 2.84441, 25.7798)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine29" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.498926, 0, 0.866645, 0, 1, 0, -0.866645, 0, 0.498926, -21.1447, 2.84441, 5.33572)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine30" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.498926, 0, 0.866645, 0, 1, 0, -0.866645, 0, 0.498926, -50.5746, 2.84441, 39.5613)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine31" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.498926, 0, 0.866645, 0, 1, 0, -0.866645, 0, 0.498926, 33.629, 2.84441, 8.19644)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine32" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.498926, 0, 0.866645, 0, 1, 0, -0.866645, 0, 0.498926, 21.8161, 2.84441, 54.4741)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine33" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.837824, 0, -0.545941, 0, 1, 0, 0.545941, 0, -0.837824, -33.9652, 1.42221, 22.0729)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../../StaticBody3D")
+
+[node name="TallPine34" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.837824, 0, -0.545941, 0, 1, 0, 0.545941, 0, -0.837824, 44.8293, 1.4222, -39.0298)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine35" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.837824, 0, -0.545941, 0, 1, 0, 0.545941, 0, -0.837824, 23.7662, 1.4222, -12.1209)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine36" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.837824, 0, -0.545941, 0, 1, 0, 0.545941, 0, -0.837824, -5.81552, 1.4222, -43.5137)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine37" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.837824, 0, -0.545941, 0, 1, 0, 0.545941, 0, -0.837824, -20.7383, 1.4222, -28.1701)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine38" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.837824, 0, -0.545941, 0, 1, 0, 0.545941, 0, -0.837824, 21.0167, 1.4222, -45.3175)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine39" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.837824, 0, -0.545941, 0, 1, 0, 0.545941, 0, -0.837824, -68.2519, 1.42221, -55.5708)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine40" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.837824, 0, -0.545941, 0, 1, 0, 0.545941, 0, -0.837824, -36.7282, 1.42221, -91.4515)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine41" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.875186, 0, 0.483787, 0, 1, 0, -0.483787, 0, -0.875186, -71.275, 2.84441, 18.8471)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../../StaticBody3D")
+
+[node name="TallPine42" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.875186, 0, 0.483787, 0, 1, 0, -0.483787, 0, -0.875186, 5.79083, 2.84441, 45.5033)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine43" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.875186, 0, 0.483787, 0, 1, 0, -0.483787, 0, -0.875186, -27.8545, 2.84441, 39.5257)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine44" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.875186, 0, 0.483787, 0, 1, 0, -0.483787, 0, -0.875186, -14.0084, 2.84441, -1.32613)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine45" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.875186, 0, 0.483787, 0, 1, 0, -0.483787, 0, -0.875186, -34.5596, 2.84441, -7.3067)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine46" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.875186, 0, 0.483787, 0, 1, 0, -0.483787, 0, -0.875186, 0.172431, 2.84441, 21.5239)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine47" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.875186, 0, 0.483787, 0, 1, 0, -0.483787, 0, -0.875186, -32.6514, 2.84441, -62.1218)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine48" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.875186, 0, 0.483787, 0, 1, 0, -0.483787, 0, -0.875186, 13.8246, 2.84441, -51.1151)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine49" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.907646, 0, -0.419737, 0, 1, 0, 0.419737, 0, 0.907646, 15.6617, 1.42221, -66.2003)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../../StaticBody3D")
+
+[node name="TallPine50" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.907646, 0, -0.419737, 0, 1, 0, 0.419737, 0, 0.907646, -63.1183, 1.4222, -87.2577)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine51" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.907646, 0, -0.419737, 0, 1, 0, 0.419737, 0, 0.907646, -29.1307, 1.4222, -83.7098)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine52" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.907646, 0, -0.419737, 0, 1, 0, 0.419737, 0, 0.907646, -40.0097, 1.4222, -41.9698)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine53" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.907646, 0, -0.419737, 0, 1, 0, 0.419737, 0, 0.907646, -19.0823, 1.4222, -37.4793)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine54" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.907646, 0, -0.419737, 0, 1, 0, 0.419737, 0, 0.907646, -55.7936, 1.4222, -63.7433)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine55" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.907646, 0, -0.419737, 0, 1, 0, 0.419737, 0, 0.907646, -17.0521, 1.42221, 17.3314)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine56" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.907646, 0, -0.419737, 0, 1, 0, 0.419737, 0, 0.907646, -64.1982, 1.42221, 9.68815)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine57" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.0551245, 0, -0.99848, 0, 1, 0, 0.99848, 0, 0.0551245, 47.5999, 2.84441, -19.6453)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../../StaticBody3D")
+
+[node name="TallPine58" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.0551245, 0, -0.99848, 0, 1, 0, 0.99848, 0, 0.0551245, 29.238, 2.84441, -99.0968)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine59" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.0551245, 0, -0.99848, 0, 1, 0, 0.99848, 0, 0.0551245, 42.0494, 2.84441, -67.417)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine60" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.0551245, 0, -0.99848, 0, 1, 0, 0.99848, 0, 0.0551245, 0.0839615, 2.84441, -57.4429)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine61" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.0551245, 0, -0.99848, 0, 1, 0, 0.99848, 0, 0.0551245, 5.93603, 2.84441, -36.8548)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine62" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.0551245, 0, -0.99848, 0, 1, 0, 0.99848, 0, 0.0551245, 11.908, 2.84441, -81.5968)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine63" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.0551245, 0, -0.99848, 0, 1, 0, 0.99848, 0, 0.0551245, -41.5164, 2.84441, -9.34838)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine64" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.0551245, 0, -0.99848, 0, 1, 0, 0.99848, 0, 0.0551245, -56.8842, 2.84441, -54.5701)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine65" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.664996, 0, -0.746847, 0, 1, 0, 0.746847, 0, 0.664996, 75.6474, 1.42221, -3.03929)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine66" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.664996, 0, -0.746847, 0, 1, 0, 0.746847, 0, 0.664996, 35.4594, 1.42221, -28.8481)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine67" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.34759, 0, -0.937647, 0, 1, 0, 0.937647, 0, -0.34759, 63.8507, 2.84441, -37.2614)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine68" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.27941, 0, 0.960172, 0, 1, 0, -0.960172, 0, 0.27941, 52.5993, 1.42221, -84.4228)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../../StaticBody3D")
+
+[node name="TallPine69" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.27941, 0, 0.960172, 0, 1, 0, -0.960172, 0, 0.27941, 43.5492, 1.4222, -3.38084)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine70" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.27941, 0, 0.960172, 0, 1, 0, -0.960172, 0, 0.27941, 41.979, 1.4222, -37.517)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine71" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.27941, 0, 0.960172, 0, 1, 0, -0.960172, 0, 0.27941, 84.876, 1.4222, -32.9967)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine72" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.27941, 0, 0.960172, 0, 1, 0, -0.960172, 0, 0.27941, 65.7052, 1.4222, -14.1367)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine73" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.979035, 0, 0.203693, 0, 1, 0, -0.203693, 0, 0.979035, 18.0436, 2.84441, -92.9315)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine74" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.979035, 0, 0.203693, 0, 1, 0, -0.203693, 0, 0.979035, 63.586, 2.84441, -70.3284)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine75" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.979035, 0, 0.203693, 0, 1, 0, -0.203693, 0, 0.979035, 37.9365, 2.84441, -78.4107)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine76" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.979035, 0, 0.203693, 0, 1, 0, -0.203693, 0, 0.979035, 74.9385, 2.84441, -14.429)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine77" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.964884, 0, 0.262678, 0, 1, 0, -0.262678, 0, -0.964884, 62.0429, 1.42221, -77.6357)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../../StaticBody3D")
+
+[node name="TallPine78" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.22068, 0, 0.975346, 0, 1, 0, -0.975346, 0, -0.22068, 70.9815, 2.84441, -32.3629)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine79" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.22068, 0, 0.975346, 0, 1, 0, -0.975346, 0, -0.22068, 53.0719, 2.84441, -61.466)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine80" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.22068, 0, 0.975346, 0, 1, 0, -0.975346, 0, -0.22068, 85.1543, 2.84441, -52.5052)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine81" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.942601, 0, -0.333922, 0, 1, 0, 0.333922, 0, 0.942601, 94.7305, 4.26662, 71.0359)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine82" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.942601, 0, -0.333922, 0, 1, 0, 0.333922, 0, 0.942601, 47.0794, 4.26662, 67.7893)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine83" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.147309, 0, -0.989091, 0, 1, 0, 0.989091, 0, 0.147309, 67.9017, 5.68882, 46.735)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../TallPine80")
+
+[node name="TallPine84" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.217905, 0, 0.97597, 0, 1, 0, -0.97597, 0, -0.217905, 35.315, 4.26662, 10.8338)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../../StaticBody3D")
+
+[node name="TallPine85" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.217905, 0, 0.97597, 0, 1, 0, -0.97597, 0, -0.217905, 66.441, 4.26661, 86.2054)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine86" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.217905, 0, 0.97597, 0, 1, 0, -0.97597, 0, -0.217905, 48.6143, 4.26661, 57.0515)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine87" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.217905, 0, 0.97597, 0, 1, 0, -0.97597, 0, -0.217905, 88.3796, 4.26661, 40.3392)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine88" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.217905, 0, 0.97597, 0, 1, 0, -0.97597, 0, -0.217905, 80.671, 4.26661, 66.1035)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine89" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.75968, 0, 0.650297, 0, 1, 0, -0.650297, 0, 0.75968, 84.9831, 5.68882, 9.76435)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../TallPine80")
+
+[node name="TallPine90" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.75968, 0, 0.650297, 0, 1, 0, -0.650297, 0, 0.75968, 51.7341, 5.68882, 17.8889)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../TallPine80")
+
+[node name="TallPine91" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.75968, 0, 0.650297, 0, 1, 0, -0.650297, 0, 0.75968, 25.3646, 5.68882, 23.168)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../TallPine80")
+
+[node name="TallPine92" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.75968, 0, 0.650297, 0, 1, 0, -0.650297, 0, 0.75968, 88.6204, 5.68882, 61.3977)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../TallPine80")
+
+[node name="TallPine93" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.972035, 0, -0.234837, 0, 1, 0, 0.234837, 0, -0.972035, 46.8604, 4.26662, 12.2297)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../../StaticBody3D")
+
+[node name="TallPine94" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.663404, 0, 0.748262, 0, 1, 0, -0.748262, 0, -0.663404, 76.5105, 5.68882, 47.5907)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../TallPine80")
+
+[node name="TallPine95" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.663404, 0, 0.748262, 0, 1, 0, -0.748262, 0, -0.663404, 46.7925, 5.68882, 30.7212)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../TallPine80")
+
+[node name="TallPine96" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.663404, 0, 0.748262, 0, 1, 0, -0.748262, 0, -0.663404, 79.2219, 5.68882, 23.1115)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../TallPine80")
