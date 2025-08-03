@@ -1,11 +1,11 @@
 extends CharacterBody3D
 
 const SPEED = 2.5
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 0
 var up_lim = PI/4 
 
 var score: int = 0
-const MAX_SCORE: int = 2
+const MAX_SCORE: int = 3
 
 @onready var camera = $DEBUG_CAMERA
 @onready var fog_shader = $FogVolume
@@ -71,11 +71,6 @@ func _physics_process(delta):
 	if (input_dir.x < 0 and not fall_left.is_colliding()): input_dir.x = 0
 	if (input_dir.x > 0 and not fall_right.is_colliding()): input_dir.x = 0
 	
-	print("forward:  ", fall_forward.is_colliding())
-	print("backward: ", fall_backward.is_colliding())
-	print("left:     ", fall_left.is_colliding())
-	print("right:    ", fall_right.is_colliding())
-	print(" ")
 	
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
