@@ -15,10 +15,10 @@ void vertex() {
 void fragment() {
 	vec3 worldNormal = (INV_VIEW_MATRIX * vec4(NORMAL.xyz, 0.0)).xyz;
 	float uppies = worldNormal.y;
-	
+
 	vec3 col;
 	vec3 dark_col;
-	
+
 	if (uppies > 0.1) {
 		col = grass_color;
 		dark_col = dark_grass_color;
@@ -26,7 +26,7 @@ void fragment() {
 		col = dirt_color;
 		dark_col = dark_dirt_color;
 	}
-	
+
 	//ALBEDO = vec3(UV, 0.0);
 	vec4 textur = texture(noise_tex, UV*noise_scale);
 	float value = textur.r;
