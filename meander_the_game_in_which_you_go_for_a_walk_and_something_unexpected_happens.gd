@@ -2,10 +2,11 @@ extends Node3D
 
 
 @onready var cloud_noise: FastNoiseLite = $WorldEnvironment.environment.sky.sky_material.panorama.noise
+@onready var sky_gradient: Gradient = $WorldEnvironment.environment.sky.sky_material.panorama.color_ramp
+@onready var ambiant_light =  $WorldEnvironment.environment.ambient_light_energy
 @onready var sun: DirectionalLight3D = $DirectionalLight3D
 @onready var light_ray_shader = $Control/ColorRect
 @onready var fog_shader = $CharacterBody3D/FogVolume
-@onready var sky_gradient: Gradient = $WorldEnvironment.environment.sky.sky_material.panorama.color_ramp
 @onready var sounds = $global_sounds
 
 
@@ -72,12 +73,14 @@ func _process(delta):
 		sounds.time_till_sunrise(progress_from_sunrise, diff)
 		if progress_from_sunrise > 0:
 			sky_color = Color(DAYTIME_SKY_COLOR*diff + NIGHTTIME_SKY_COLOR*(1-diff))
+			ambiant_light = (0.04*diff + 0.03*(1-diff))
 	elif absf(progress_from_sunset) < max_diff:
 		diff = (max_diff-absf(progress_from_sunset))/max_diff
 		light_color = Color(SUNSET_COLOR*diff + DEFAULT_SUN_COLOR*(1-diff))
 		sounds.time_till_sunset(progress_from_sunset, diff)
 		if progress_from_sunset < 0:
 			sky_color = Color(NIGHTTIME_SKY_COLOR*diff + DAYTIME_SKY_COLOR*(1-diff))
+			ambiant_light = (0.03*diff + 0.04*(1-diff))
 	
 	sky_gradient.colors[0] = sky_color
 	sun.light_color = light_color
