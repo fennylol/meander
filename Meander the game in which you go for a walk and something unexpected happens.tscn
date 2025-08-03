@@ -1,9 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://crvh2uj0lo2io"]
+[gd_scene load_steps=15 format=3 uid="uid://crvh2uj0lo2io"]
 
 [ext_resource type="Script" uid="uid://cdirnl1dsl1k8" path="res://meander_the_game_in_which_you_go_for_a_walk_and_something_unexpected_happens.gd" id="1_0vf6b"]
 [ext_resource type="Script" uid="uid://b1uit2ef4a4oq" path="res://DEBUG_CHARACTER_3D/debug_character_3D.gd" id="2_e1kja"]
+[ext_resource type="ArrayMesh" uid="uid://ymccg6yalfy7" path="res://tree/tall_pine.obj" id="4_lrc6v"]
 [ext_resource type="Environment" uid="uid://wp6em5kx1a13" path="res://envrionment/foggy__shader_env.tres" id="4_o76sj"]
 [ext_resource type="Shader" uid="uid://bltgyx23gx71l" path="res://envrionment/colorbox.gdshader" id="5_0vf6b"]
+[ext_resource type="Script" uid="uid://x18skoxsukav" path="res://envrionment/fogscript.gd" id="5_bmvuf"]
 [ext_resource type="Script" uid="uid://b8c0xlr5327br" path="res://envrionment/color_rect.gd" id="5_e1kja"]
 [ext_resource type="Shader" uid="uid://dk35atq7muy7g" path="res://envrionment/fogshader.gdshader" id="6_o76sj"]
 [ext_resource type="PackedScene" uid="uid://drc2fs0qo5awx" path="res://meandermap_semifinal.tscn" id="8_bmvuf"]
@@ -13,21 +15,11 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lrc6v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o76sj"]
-resource_local_to_scene = true
 shader = ExtResource("6_o76sj")
-shader_parameter/density = 0.145
+shader_parameter/density = 0.05
 shader_parameter/max_height = 25.0
 shader_parameter/start_dist = 15.0
 shader_parameter/end_dist = 45.0
-
-[sub_resource type="GDScript" id="GDScript_lrc6v"]
-script/source = "extends FogVolume
-
-func material_parameters(density: float, start_dist: float = 15, end_dist: float = 45):
-	material.set_shader_parameter(\"density\", density)
-	material.set_shader_parameter(\"start_dist\", start_dist)
-	material.set_shader_parameter(\"end_dist\", end_dist)
-"
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_lrc6v"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
@@ -67,16 +59,17 @@ offset_bottom = 23.0
 environment = ExtResource("4_o76sj")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.103244, -0.365184, 0.925193, 0.0163356, 0.93066, 0.365519, -0.994522, -0.0226241, 0.102051, -7.167, 1.76, 0)
+transform = Transform3D(0.0923885, -0.994701, 0.045089, 0.000791693, 0.045356, 0.998971, -0.995723, -0.0922576, 0.00497787, -7.167, 1.76, 0)
 light_color = Color(0.911919, 0.9568, 0.685489, 1)
-light_energy = 0.0
-light_volumetric_fog_energy = 10.0
+light_energy = 0.01
+light_volumetric_fog_energy = 100.0
 shadow_enabled = true
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.768033, -0.0912672, 0.633873, -0.124497, 0.949631, 0.287578, -0.628192, -0.299785, 0.717986, -4.49393, 1.76036, 0)
 light_color = Color(0.934228, 0.908959, 0.998479, 1)
-light_energy = 0.1
+light_energy = 0.01
+light_volumetric_fog_energy = 10.0
 light_specular = 0.0
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
@@ -101,7 +94,7 @@ shape = SubResource("CapsuleShape3D_lrc6v")
 size = Vector3(100, 100, 100)
 shape = 0
 material = SubResource("ShaderMaterial_o76sj")
-script = SubResource("GDScript_lrc6v")
+script = ExtResource("5_bmvuf")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -143,5 +136,74 @@ transform = Transform3D(-0.190809, 0, -0.981627, 0, 1, 0, 0.981627, 0, -0.190809
 
 [node name="meander_02" parent="." instance=ExtResource("8_bmvuf")]
 
-[node name="meander_03" parent="." instance=ExtResource("8_bmvuf")]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="TallPine" type="MeshInstance3D" parent="meander_02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.8841, 1.3722, -7.22832)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine2" type="MeshInstance3D" parent="meander_02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.5623, 1.3722, -35.9725)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine3" type="MeshInstance3D" parent="meander_02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.8803, 1.3722, -18.7852)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine4" type="MeshInstance3D" parent="meander_02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.1492, 1.3722, -25.6017)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../..")
+
+[node name="TallPine5" type="MeshInstance3D" parent="meander_02"]
+transform = Transform3D(0.895082, 0, -0.445901, 0, 1, 0, 0.445901, 0, 0.895082, 58.3533, 0.450623, -21.4986)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine6" type="MeshInstance3D" parent="meander_02"]
+transform = Transform3D(0.895082, 0, -0.445901, 0, 1, 0, 0.445901, 0, 0.895082, 75.3577, 0.450625, -45.141)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine7" type="MeshInstance3D" parent="meander_02"]
+transform = Transform3D(0.895082, 0, -0.445901, 0, 1, 0, 0.445901, 0, 0.895082, 67.9785, 0.450627, -29.6151)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine8" type="MeshInstance3D" parent="meander_02"]
+transform = Transform3D(0.895082, 0, -0.445901, 0, 1, 0, 0.445901, 0, 0.895082, 57.801, 0.450625, -40.105)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine9" type="MeshInstance3D" parent="meander_02"]
+transform = Transform3D(0.895082, 0, -0.445901, 0, 1, 0, 0.445901, 0, 0.895082, 69.725, 7.21244, -3.97364)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine10" type="MeshInstance3D" parent="meander_02"]
+transform = Transform3D(0.895082, 0, -0.445901, 0, 1, 0, 0.445901, 0, 0.895082, 86.7294, 2.1047, -27.6161)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine11" type="MeshInstance3D" parent="meander_02"]
+transform = Transform3D(0.895082, 0, -0.445901, 0, 1, 0, 0.445901, 0, 0.895082, 79.3502, 4.08622, -12.0902)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine12" type="MeshInstance3D" parent="meander_02"]
+transform = Transform3D(0.895082, 0, -0.445901, 0, 1, 0, 0.445901, 0, 0.895082, 74.5747, 0.443692, -22.0848)
+mesh = ExtResource("4_lrc6v")
+
+[node name="TallPine13" type="MeshInstance3D" parent="meander_02"]
+transform = Transform3D(0.602345, 0, -0.798236, 0, 1, 0, 0.798236, 0, 0.602345, 90.8293, 0.0211244, -9.4031)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../TallPine8")
+
+[node name="TallPine14" type="MeshInstance3D" parent="meander_02"]
+transform = Transform3D(0.602345, 0, -0.798236, 0, 1, 0, 0.798236, 0, 0.602345, 116.592, 9.68415, -22.9827)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../TallPine8")
+
+[node name="TallPine15" type="MeshInstance3D" parent="meander_02"]
+transform = Transform3D(0.602345, 0, -0.798236, 0, 1, 0, 0.798236, 0, 0.602345, 103.064, 2.28439, -12.3762)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../TallPine8")
+
+[node name="TallPine16" type="MeshInstance3D" parent="meander_02"]
+transform = Transform3D(0.602345, 0, -0.798236, 0, 1, 0, 0.798236, 0, 0.602345, 98.6316, 1.18313, -26.3036)
+mesh = ExtResource("4_lrc6v")
+skeleton = NodePath("../TallPine8")

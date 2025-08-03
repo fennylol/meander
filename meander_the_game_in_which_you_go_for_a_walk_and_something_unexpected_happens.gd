@@ -3,7 +3,9 @@ extends Node3D
 
 @onready var cloud_noise: FastNoiseLite = $WorldEnvironment.environment.sky.sky_material.panorama.noise
 @onready var sun: DirectionalLight3D = $DirectionalLight3D
-@onready var shader = $Control/ColorRect
+@onready var light_ray_shader = $Control/ColorRect
+@onready var fog_shader = $CharacterBody3D/FogVolume
+
 
 static func get_progress_from_time(time : Array) -> float:
 	return  float(time[HOUR])  /float(HOURS_PER_DAY) + \
@@ -30,6 +32,9 @@ var SUNRISE_COLOR: Color = Color(0.965, 0.412, 0.471)
 var SUNSET_COLOR: Color = Color(1.0, 0.549, 0.0)
 var DEFAULT_SUN_COLOR: Color = Color(0.724, 0.721, 0.552)
 
+var MAX_TIME_BASED_FOG_DENSITY: float = 0.05
+var MIN_TIME_BASED_FOG_DENSITY: float = 0.01
+
 func _ready() -> void: 
 	cloud_noise.seed = randi()
 	
@@ -38,6 +43,7 @@ func _ready() -> void:
 	get_viewport().size_changed.connect(resize_subviewport)
 
 func _process(delta):
+	# advance time and calculate day_progress
 	if not time_paused:
 		world_time[SECOND] += delta*(SECONDS_PER_MINUTE/IN_GAME_MINUTE_LENGTH_IN_REAL_WORLD_SECONDS)
 		
@@ -46,9 +52,9 @@ func _process(delta):
 			world_time[MINUTE] = (world_time[MINUTE] + 1) % MINUTES_PER_HOUR
 			if world_time[MINUTE] == 0: world_time[HOUR] = ((world_time[HOUR] + 1) % HOURS_PER_DAY)
 			if  world_time[MINUTE] == 0 and  world_time[HOUR] == 0: world_time[DAY] += 1
-		
 	day_progress = get_progress_from_time(world_time)
 	
+	# adjust light color according to day_progress
 	var max_diff = get_progress_from_time([1,30,0])
 	var color = DEFAULT_SUN_COLOR
 	
@@ -64,9 +70,12 @@ func _process(delta):
 		color = Color(SUNSET_COLOR*diff + DEFAULT_SUN_COLOR*(1-diff))
 	sun.light_color = color
 	
-	shader.update_shader_params(diff)
 	
+	light_ray_shader.update_shader_params(diff)
+	var fog_density = ((MAX_TIME_BASED_FOG_DENSITY-MIN_TIME_BASED_FOG_DENSITY)*diff)+MIN_TIME_BASED_FOG_DENSITY
+	fog_shader.update_shader_params(fog_density)
 	
+	# rotate sun and clouds
 	sun.rotation_degrees.x = -day_progress*360
 	cloud_noise.offset.x += delta*cloud_speed
 	
