@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=4 uid="uid://dil6xgr6h1mu4"]
+[gd_scene load_steps=10 format=4 uid="uid://dil6xgr6h1mu4"]
 
 [ext_resource type="PackedScene" uid="uid://c7rffuei4rtq2" path="res://object_models/raw_files/tree_small.glb" id="1_bvvyd"]
 [ext_resource type="Material" uid="uid://d10lx4cpe54d1" path="res://object_models/object_materials/foilage.tres" id="2_p1xk0"]
+[ext_resource type="Material" uid="uid://b8r7j12aae3h0" path="res://object_models/object_materials/blowin_in_da_wind.tres" id="3_p1xk0"]
 [ext_resource type="Material" uid="uid://df0r3lyojer8e" path="res://object_models/object_materials/trunk.tres" id="3_sobx8"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_i8s62"]
@@ -78,6 +79,7 @@ radius = 0.25
 
 [node name="foilage" parent="." index="0"]
 mesh = SubResource("ArrayMesh_kxamb")
+surface_material_override/0 = ExtResource("3_p1xk0")
 
 [node name="trunk" parent="." index="1"]
 mesh = SubResource("ArrayMesh_jj5in")

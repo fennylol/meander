@@ -3,17 +3,21 @@
 [ext_resource type="Shader" uid="uid://bbxfnq30fs38e" path="res://map/ground_shade.gdshader" id="1_4i24x"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4i24x"]
-seed = 1425
+frequency = 0.011
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3m3ur"]
+seamless = true
 noise = SubResource("FastNoiseLite_4i24x")
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_4i24x")
 shader_parameter/grass_color = Color(0.41, 0.754, 0.37, 1)
-shader_parameter/dark_grass_color = Color(0.334823, 0.62603, 0.301177, 1)
+shader_parameter/dark_grass_color = Color(0.212, 0.411, 0.189, 1)
 shader_parameter/dirt_color = Color(0.504, 0.334, 0.102, 1)
 shader_parameter/dark_dirt_color = Color(0.373, 0.243, 0.065, 1)
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_3m3ur")
 shader_parameter/noise_scale = 3.0
+shader_parameter/splatter_threshold = 0.3
+shader_parameter/splatter_softness = 0.3
+shader_parameter/splatter_exp = 1.0

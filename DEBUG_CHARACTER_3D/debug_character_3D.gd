@@ -4,6 +4,9 @@ const SPEED = 2.5
 const JUMP_VELOCITY = 4.5
 var up_lim = PI/4 
 
+var score: int = 0
+const MAX_SCORE: int = 2
+
 @onready var camera = $DEBUG_CAMERA
 @onready var fog_shader = $FogVolume
 

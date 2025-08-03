@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://crvh2uj0lo2io"]
+[gd_scene load_steps=26 format=3 uid="uid://crvh2uj0lo2io"]
 
 [ext_resource type="Script" uid="uid://cdirnl1dsl1k8" path="res://meander_the_game_in_which_you_go_for_a_walk_and_something_unexpected_happens.gd" id="1_0vf6b"]
 [ext_resource type="Script" uid="uid://b1uit2ef4a4oq" path="res://DEBUG_CHARACTER_3D/debug_character_3D.gd" id="2_e1kja"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://byto0f55pbyn6" path="res://object_models/scenes_with_colliders/rock_2.tscn" id="7_eb0bq"]
 [ext_resource type="PackedScene" uid="uid://cnuwtqxkqccv4" path="res://object_models/scenes_with_colliders/log_large.tscn" id="8_7ddvd"]
 [ext_resource type="PackedScene" uid="uid://dyjes4ery2xmu" path="res://object_models/scenes_with_colliders/sign.tscn" id="9_ay1ci"]
+[ext_resource type="PackedScene" uid="uid://c7d5g5drbnawn" path="res://map/checkpoint.tscn" id="16_dlpvk"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0vf6b"]
 
@@ -43,6 +44,18 @@ shader_parameter/noise_strength = 0.2
 shader_parameter/light_source_pos = Vector2(0, 0)
 shader_parameter/light_source_dir = Vector3(0.5, -1, 0.25)
 shader_parameter/camera_dir = Vector3(-0.5, 1, -0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y31hf"]
+size = Vector3(110.345, 4.28857, 14.0237)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dlpvk"]
+size = Vector3(16.4358, 6.54468, 67.8438)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7d5ad"]
+size = Vector3(7.82642, 2.82812, 36.7168)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eb0bq"]
+size = Vector3(44.7601, 3.34778, 27.4768)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_0vf6b")
@@ -371,8 +384,8 @@ environment = ExtResource("4_o76sj")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.0923885, -0.994701, 0.045089, 0.000791693, 0.045356, 0.998971, -0.995723, -0.0922576, 0.00497787, -7.167, 1.76, 0)
 light_color = Color(0.911919, 0.9568, 0.685489, 1)
-light_energy = 0.01
-light_volumetric_fog_energy = 100.0
+light_energy = 0.025
+light_volumetric_fog_energy = 50.0
 shadow_enabled = true
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
@@ -382,7 +395,7 @@ light_volumetric_fog_energy = 10.0
 light_specular = 0.0
 editor_only = true
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["player"]]
 transform = Transform3D(-0.190809, 0, -0.981627, 0, 1, 0, 0.981627, 0, -0.190809, 16.4285, 1.35122, -16.0903)
 floor_max_angle = 2.61799
 script = ExtResource("2_e1kja")
@@ -401,6 +414,7 @@ mesh = SubResource("CapsuleMesh_0vf6b")
 shape = SubResource("CapsuleShape3D_lrc6v")
 
 [node name="FogVolume" type="FogVolume" parent="CharacterBody3D"]
+visible = false
 size = Vector3(100, 100, 100)
 shape = 0
 material = SubResource("ShaderMaterial_o76sj")
@@ -443,3 +457,32 @@ render_target_update_mode = 4
 
 [node name="Camera3D_vp" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(-0.190809, 0, -0.981627, 0, 1, 0, 0.981627, 0, -0.190809, 16.409, 1.34687, -16.101)
+
+[node name="first_bridge" parent="." instance=ExtResource("16_dlpvk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.5836, 0.504229, -158.388)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="first_bridge"]
+transform = Transform3D(0.953412, 0, 0.301671, 0, 1, 0, -0.301671, 0, 0.953412, -2.37298, 1.64429, -3.586)
+shape = SubResource("BoxShape3D_y31hf")
+
+[node name="second_bridge" parent="." instance=ExtResource("16_dlpvk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.9902, 1.00845, -115.211)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="second_bridge"]
+transform = Transform3D(0.943622, 0, -0.331025, 0, 1, 0, 0.331025, 0, 0.943622, 165.014, 3.02612, -86.6431)
+shape = SubResource("BoxShape3D_dlpvk")
+
+[node name="third_bridge" parent="." instance=ExtResource("16_dlpvk")]
+transform = Transform3D(0.408649, 0, -0.912692, 0, 1, 0, 0.912692, 0, 0.408649, 93.1206, 8.0927, -10.9371)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="third_bridge"]
+transform = Transform3D(0.994993, 0, -0.0999448, 0, 1, 0, 0.0999448, 0, 0.994993, 0.756775, 0.914062, -0.417503)
+shape = SubResource("BoxShape3D_7d5ad")
+
+[node name="camp" parent="." instance=ExtResource("16_dlpvk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0909, 0.0200007, -13.9067)
+IsFinal = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="camp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77541, 1.49321, -0.301179)
+shape = SubResource("BoxShape3D_eb0bq")

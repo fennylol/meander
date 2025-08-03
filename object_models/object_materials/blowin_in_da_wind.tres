@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://b8r7j12aae3h0"]
+
+[ext_resource type="Shader" uid="uid://dq0x27xgk8l0t" path="res://object_models/object_materials/blowin_in_da_wind.gdshader" id="1_q01j2"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q01j2"]
+frequency = 0.0026
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nkuxh"]
+seamless = true
+noise = SubResource("FastNoiseLite_q01j2")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_q01j2")
+shader_parameter/wind_strength = 0.15
+shader_parameter/wind_speed = 1.0
+shader_parameter/wind_direction = Vector2(1, 0)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nkuxh")
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_strength = 0.3
+shader_parameter/trunk_stiffness = 0.8
+shader_parameter/height_influence = 1.5

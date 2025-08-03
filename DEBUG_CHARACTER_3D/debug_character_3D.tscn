@@ -4,7 +4,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_invmk"]
 
-[node name="DEBUG_CHARACTER_3D" type="CharacterBody3D"]
+[node name="DEBUG_CHARACTER_3D" type="CharacterBody3D" groups=["player"]]
 
 [node name="DEBUG_CAMERA" type="Camera3D" parent="."]
 

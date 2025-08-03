@@ -7,6 +7,9 @@ uniform vec3 dirt_color: source_color = vec3(0.504, 0.334, 0.102);
 uniform vec3 dark_dirt_color: source_color = vec3(0.373, 0.243, 0.065);
 uniform sampler2D noise_tex;
 uniform float noise_scale = 3.0;
+uniform float splatter_threshold = 0.25;
+uniform float splatter_softness = 0.5;
+uniform float splatter_exp = 2.0;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
@@ -16,22 +19,22 @@ void fragment() {
 	vec3 worldNormal = (INV_VIEW_MATRIX * vec4(NORMAL.xyz, 0.0)).xyz;
 	float uppies = worldNormal.y;
 
-	vec3 col;
-	vec3 dark_col;
+	vec3 col = grass_color;
+	vec3 alt_col = dirt_color;
 
-	if (uppies > 0.1) {
-		col = grass_color;
-		dark_col = dark_grass_color;
-	} else {
+	if (uppies < 0.1) {
 		col = dirt_color;
-		dark_col = dark_dirt_color;
+		alt_col = dark_dirt_color;
 	}
 
 	//ALBEDO = vec3(UV, 0.0);
-	vec4 textur = texture(noise_tex, UV*noise_scale);
-	float value = textur.r;
-	value += sqrt(value);
-	ALBEDO = (col*value)+(dark_col*(1.0-value));
+	vec4 noise_value = texture(noise_tex, UV*noise_scale);
+	float value = noise_value.r;
+	value = smoothstep(splatter_threshold - splatter_softness, splatter_threshold + splatter_softness, value);
+	value = pow(value, splatter_exp);
+	vec3 alternate_splat = (col*value)+(alt_col*(1.0-value));
+
+	ALBEDO = alternate_splat;
 }
 
 //void light() {
