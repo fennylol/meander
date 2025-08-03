@@ -14,4 +14,5 @@ parameters/looping = true
 
 [node name="cicadas" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ggacy")
+volume_db = -10.0
 parameters/looping = true
