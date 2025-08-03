@@ -5,32 +5,30 @@ extends Node3D
 @onready var sun: DirectionalLight3D = $DirectionalLight3D
 @onready var shader = $Control/ColorRect
 
+static func get_progress_from_time(time : Array) -> float:
+	return  float(time[HOUR])  /float(HOURS_PER_DAY) + \
+			float(time[MINUTE])/float(HOURS_PER_DAY * MINUTES_PER_HOUR) + \
+			float(time[SECOND])/float(HOURS_PER_DAY * MINUTES_PER_HOUR * SECONDS_PER_MINUTE)
 
 var day_progress: float = 0.0
 var time_paused: bool = false
-var day_length: float = 60.0
 
-var cloud_speed: float = 3.0
-
-
+var cloud_speed: float = 1.5
 
 
 enum {HOUR, MINUTE, SECOND, DAY}
 const SECONDS_PER_MINUTE: float = 60.0
 const MINUTES_PER_HOUR: int = 60
 const HOURS_PER_DAY: int = 24
-var IN_GAME_MINUTE_LENGTH_IN_REAL_WORLD_SECONDS: float = .1
+var IN_GAME_MINUTE_LENGTH_IN_REAL_WORLD_SECONDS: float = .5
 
-var SUNRISE_TIME: Array = [0, 0, 0]
-var SUNRISE_COLOR: Color = Color.DEEP_PINK
-var SUNSET_TIME: Array = [12, 0, 0]
-var SUNSET_COLOR: Color = Color.DARK_ORANGE
-var DEFAULT_SUN_COLOR: Color = Color.WHITE
 var world_time: Array = [23, 59, 60.0, -1]
+var SUNRISE_TIME: Array = [0, 35, 0]
+var SUNSET_TIME: Array = [11, 30, 0]
 
-
-
-
+var SUNRISE_COLOR: Color = Color(0.965, 0.412, 0.471)
+var SUNSET_COLOR: Color = Color(1.0, 0.549, 0.0)
+var DEFAULT_SUN_COLOR: Color = Color(0.724, 0.721, 0.552)
 
 func _ready() -> void: 
 	cloud_noise.seed = randi()
@@ -76,9 +74,3 @@ func _process(delta):
 	$gui/Label.text = "FPS: " + str(fps)
 	
 	#print(world_time, '\n', day_progress)
-
-
-func get_progress_from_time(time : Array) -> float:
-	return  float(time[HOUR])  /float(HOURS_PER_DAY) + \
-			float(time[MINUTE])/float(HOURS_PER_DAY * MINUTES_PER_HOUR) + \
-			float(time[SECOND])/float(HOURS_PER_DAY * MINUTES_PER_HOUR * SECONDS_PER_MINUTE)

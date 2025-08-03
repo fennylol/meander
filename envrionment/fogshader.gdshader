@@ -11,8 +11,8 @@ void fog() {
 	float zdist = (WORLD_POSITION.z-OBJECT_POSITION.z)*(WORLD_POSITION.z-OBJECT_POSITION.z);
 	float dist = sqrt(xdist+ydist+zdist);
 	
-	float yprop = 1.0-max(ydist/max_height, 0);
 	float prop = max((dist-start_dist)/(end_dist-start_dist), 0);
-	DENSITY = (yprop+prop)*density;
+	float yprop = max(1.0-(WORLD_POSITION.y/max_height), 0);
+	DENSITY = prop*yprop*density;
 	ALBEDO = vec3(1.0);
 }
