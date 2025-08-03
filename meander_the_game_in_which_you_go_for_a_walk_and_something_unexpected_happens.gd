@@ -75,8 +75,7 @@ func _process(delta):
 		light_color = Color(SUNSET_COLOR*diff + DEFAULT_SUN_COLOR*(1-diff))
 		if progress_from_sunset < 0:
 			sky_color = Color(NIGHTTIME_SKY_COLOR*diff + DAYTIME_SKY_COLOR*(1-diff))
-		
-	print("PFS: " ,progress_from_sunrise, '\n', "PFSS: " ,progress_from_sunset, '\n', diff, '\n', world_time, '\n', sky_color, '\n')
+	
 	sky_gradient.colors[0] = sky_color
 	sun.light_color = light_color
 	
