@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjx3n866j20rq"]
+
+[ext_resource type="PackedScene" uid="uid://c7d5g5drbnawn" path="res://map/checkpoint.tscn" id="1_dtt27"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r04d5"]
+size = Vector3(110.345, 4.28857, 14.0237)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vrds4"]
+size = Vector3(16.4358, 6.54468, 67.8438)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bnd7w"]
+size = Vector3(7.82642, 2.82812, 36.7168)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hwt35"]
+size = Vector3(44.7601, 3.34778, 27.4768)
+
+[node name="checkpooint" type="Node3D"]
+
+[node name="first_bridge" parent="." instance=ExtResource("1_dtt27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.5836, 0.504229, -158.388)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="first_bridge"]
+transform = Transform3D(0.953412, 0, 0.301671, 0, 1, 0, -0.301671, 0, 0.953412, -2.37298, 1.64429, -3.586)
+shape = SubResource("BoxShape3D_r04d5")
+
+[node name="second_bridge" parent="." instance=ExtResource("1_dtt27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.9902, 1.00845, -115.211)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="second_bridge"]
+transform = Transform3D(0.943622, 0, -0.331025, 0, 1, 0, 0.331025, 0, 0.943622, 165.014, 3.02612, -86.6431)
+shape = SubResource("BoxShape3D_vrds4")
+
+[node name="third_bridge" parent="." instance=ExtResource("1_dtt27")]
+transform = Transform3D(0.408649, 0, -0.912692, 0, 1, 0, 0.912692, 0, 0.408649, 93.1206, 8.0927, -10.9371)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="third_bridge"]
+transform = Transform3D(0.994993, 0, -0.0999448, 0, 1, 0, 0.0999448, 0, 0.994993, 0.756775, 0.914062, -0.417503)
+shape = SubResource("BoxShape3D_bnd7w")
+
+[node name="camp" parent="." instance=ExtResource("1_dtt27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0909, 0.0200007, -13.9067)
+IsFinal = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="camp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77541, 1.49321, -0.301179)
+shape = SubResource("BoxShape3D_hwt35")
