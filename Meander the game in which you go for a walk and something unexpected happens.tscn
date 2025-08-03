@@ -383,7 +383,7 @@ light_specular = 0.0
 editor_only = true
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(-0.190809, 0, -0.981627, 0, 1, 0, 0.981627, 0, -0.190809, 16.4285, 1.35122, -16.0903)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4285, 1.35122, -16.0903)
 floor_max_angle = 2.61799
 script = ExtResource("2_e1kja")
 
@@ -405,6 +405,29 @@ size = Vector3(100, 100, 100)
 shape = 0
 material = SubResource("ShaderMaterial_o76sj")
 script = ExtResource("5_bmvuf")
+
+[node name="fall_zone" type="Node3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="forward" type="RayCast3D" parent="CharacterBody3D/fall_zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6)
+target_position = Vector3(0, -2, 0)
+collision_mask = 3
+
+[node name="backward" type="RayCast3D" parent="CharacterBody3D/fall_zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.6)
+target_position = Vector3(0, -2, 0)
+collision_mask = 3
+
+[node name="left" type="RayCast3D" parent="CharacterBody3D/fall_zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0)
+target_position = Vector3(0, -2, 0)
+collision_mask = 3
+
+[node name="right" type="RayCast3D" parent="CharacterBody3D/fall_zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
+target_position = Vector3(0, -2, 0)
+collision_mask = 3
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -442,4 +465,4 @@ render_target_clear_mode = 2
 render_target_update_mode = 4
 
 [node name="Camera3D_vp" type="Camera3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(-0.190809, 0, -0.981627, 0, 1, 0, 0.981627, 0, -0.190809, 16.409, 1.34687, -16.101)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4217, 1.34687, -16.0691)
