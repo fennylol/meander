@@ -1,5 +1,7 @@
 extends Node
-
+# sounds from:
+# https://pixabay.com/users/freesound_community-46691455/
+# https://pixabay.com/users/zehendrew-39650991/
 
 @onready var birds_player: AudioStreamPlayer = $birds
 @onready var cicadas_player: AudioStreamPlayer = $cicadas
