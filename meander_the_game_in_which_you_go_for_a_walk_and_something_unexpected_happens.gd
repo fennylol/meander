@@ -7,7 +7,9 @@ extends Node3D
 @onready var fog_shader = $CharacterBody3D/FogVolume
 @onready var sky_gradient: Gradient = $WorldEnvironment.environment.sky.sky_material.panorama.color_ramp
 @onready var sounds = $global_sounds
-
+@onready var camp = $camp
+@onready var fade_to_black_screen = $gui/FADE_TO_BLACK
+@onready var fade_color = $gui/FADE_TO_BLACK/ColorRect
 
 static func get_progress_from_time(time : Array) -> float:
 	return  float(time[HOUR])  /float(HOURS_PER_DAY) + \
@@ -19,6 +21,8 @@ var time_paused: bool = false
 
 var cloud_speed: float = 1.5
 
+var game_complete = false
+var fade_timer = 0.0
 
 enum {HOUR, MINUTE, SECOND, DAY}
 const SECONDS_PER_MINUTE: float = 60.0
@@ -44,8 +48,18 @@ func _ready() -> void:
 	var resize_subviewport = func(): $SubViewportContainer/SubViewport.size = get_viewport().size
 	resize_subviewport.call()
 	get_viewport().size_changed.connect(resize_subviewport)
+	fade_to_black_screen.visible = false
+	camp.finished.connect(fade)
+
+func fade():
+	game_complete = true
 
 func _process(delta):
+	if game_complete:
+		fade_to_black_screen.visible = true
+		fade_timer += delta * 0.5
+		fade_to_black_screen.get_child(0).color = lerp(Color.TRANSPARENT,Color.BLACK,fade_timer)
+
 	# advance time and calculate day_progress
 	if not time_paused:
 		world_time[SECOND] += delta*(SECONDS_PER_MINUTE/IN_GAME_MINUTE_LENGTH_IN_REAL_WORLD_SECONDS)

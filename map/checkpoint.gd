@@ -1,6 +1,7 @@
 extends Area3D
 
 @export var IsFinal: bool = false
+signal finished
 
 func _on_body_entered(body: Node3D) -> void:
 	if (body.is_in_group("player")):
@@ -10,4 +11,5 @@ func _on_body_entered(body: Node3D) -> void:
 		elif (IsFinal and body.score >= body.MAX_SCORE):
 			body.score += 1
 			self.queue_free()
-			print("you win")
+			finished.emit()
+			
