@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://djqcff3hcq21h"]
 
-[ext_resource type="Shader" uid="uid://dq0x27xgk8l0t" path="res://object_models/object_materials/blowin_in_da_wind.gdshader" id="1_q01j2"]
+[ext_resource type="Shader" path="res://object_models/object_materials/blowin_in_da_wind.gdshader" id="1_q01j2"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_q01j2"]
 frequency = 0.0026
