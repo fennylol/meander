@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://d04xs2vja0381"]
+
+[ext_resource type="Script" uid="uid://cm4fotghwybe7" path="res://envrionment/sounds/ambiance_player.gd" id="1_y3kcc"]
+[ext_resource type="AudioStream" uid="uid://derjhm0ftcn2n" path="res://envrionment/sounds/birds-chirping-calm-173695.mp3" id="2_gcg0v"]
+[ext_resource type="AudioStream" uid="uid://jug05xuqe1ly" path="res://envrionment/sounds/cicadas-chirping-at-night-54307.mp3" id="3_ggacy"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_y3kcc")
+
+[node name="birds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_gcg0v")
+volume_db = -10.0
+parameters/looping = true
+
+[node name="cicadas" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ggacy")
+parameters/looping = true

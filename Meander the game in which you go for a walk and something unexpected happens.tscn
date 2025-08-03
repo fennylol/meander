@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://crvh2uj0lo2io"]
+[gd_scene load_steps=28 format=3 uid="uid://crvh2uj0lo2io"]
 
 [ext_resource type="Script" uid="uid://cdirnl1dsl1k8" path="res://meander_the_game_in_which_you_go_for_a_walk_and_something_unexpected_happens.gd" id="1_0vf6b"]
 [ext_resource type="Script" uid="uid://b1uit2ef4a4oq" path="res://DEBUG_CHARACTER_3D/debug_character_3D.gd" id="2_e1kja"]
@@ -15,7 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://byto0f55pbyn6" path="res://object_models/scenes_with_colliders/rock_2.tscn" id="7_eb0bq"]
 [ext_resource type="PackedScene" uid="uid://cnuwtqxkqccv4" path="res://object_models/scenes_with_colliders/log_large.tscn" id="8_7ddvd"]
 [ext_resource type="PackedScene" uid="uid://dyjes4ery2xmu" path="res://object_models/scenes_with_colliders/sign.tscn" id="9_ay1ci"]
+[ext_resource type="AudioStream" uid="uid://ci0uf5e6g06lb" path="res://envrionment/sounds/going-on-a-forest-road-gravel-and-grass-6404.mp3" id="14_7d5ad"]
 [ext_resource type="PackedScene" uid="uid://c7d5g5drbnawn" path="res://map/checkpoint.tscn" id="16_dlpvk"]
+[ext_resource type="PackedScene" uid="uid://d04xs2vja0381" path="res://envrionment/sounds/ambiance_player.tscn" id="17_y31hf"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0vf6b"]
 
@@ -1410,7 +1412,6 @@ shadow_enabled = true
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.768033, -0.0912672, 0.633873, -0.124497, 0.949631, 0.287578, -0.628192, -0.299785, 0.717986, -4.49393, 1.76036, 0)
-visible = false
 light_color = Color(0.934228, 0.908959, 0.998479, 1)
 light_volumetric_fog_energy = 10.0
 light_specular = 0.0
@@ -1461,6 +1462,9 @@ collision_mask = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
 target_position = Vector3(0, -2, 0)
 collision_mask = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CharacterBody3D"]
+stream = ExtResource("14_7d5ad")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -1528,3 +1532,5 @@ IsFinal = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="camp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77541, 1.49321, -0.301179)
 shape = SubResource("BoxShape3D_eb0bq")
+
+[node name="global_sounds" parent="." instance=ExtResource("17_y31hf")]

@@ -9,7 +9,7 @@ const MAX_SCORE: int = 3
 
 @onready var camera = $DEBUG_CAMERA
 @onready var fog_shader = $FogVolume
-
+@onready var sounds = $AudioStreamPlayer
 @onready var fall_forward  : RayCast3D = $fall_zone/forward
 @onready var fall_backward : RayCast3D = $fall_zone/backward
 @onready var fall_left     : RayCast3D = $fall_zone/left
@@ -31,6 +31,7 @@ func register_input(input_name: String, keycode: Key):
 
 
 func _ready():
+	sounds.playing = true
 	register_input("jump", KEY_SPACE)
 	register_input("left", KEY_A)
 	register_input("down", KEY_S)
@@ -75,9 +76,11 @@ func _physics_process(delta):
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	if direction:
+		sounds.stream_paused = false
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
+		sounds.stream_paused = true
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	

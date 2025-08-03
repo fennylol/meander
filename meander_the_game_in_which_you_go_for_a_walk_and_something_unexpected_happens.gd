@@ -6,6 +6,7 @@ extends Node3D
 @onready var light_ray_shader = $Control/ColorRect
 @onready var fog_shader = $CharacterBody3D/FogVolume
 @onready var sky_gradient: Gradient = $WorldEnvironment.environment.sky.sky_material.panorama.color_ramp
+@onready var sounds = $global_sounds
 
 
 static func get_progress_from_time(time : Array) -> float:
@@ -25,7 +26,7 @@ const MINUTES_PER_HOUR: int = 60
 const HOURS_PER_DAY: int = 24
 var IN_GAME_MINUTE_LENGTH_IN_REAL_WORLD_SECONDS: float = .625
 
-var world_time: Array = [23, 59, 60.0, -1]
+var world_time: Array = [-1, 35, 60.0, -1]
 var SUNRISE_TIME: Array = [0, 35, 0]
 var SUNSET_TIME: Array = [11, 30, 0]
 
@@ -68,11 +69,13 @@ func _process(delta):
 	if absf(progress_from_sunrise) < max_diff:
 		diff = (max_diff-absf(progress_from_sunrise))/max_diff
 		light_color = Color(SUNRISE_COLOR*diff + DEFAULT_SUN_COLOR*(1-diff))
+		sounds.time_till_sunrise(progress_from_sunrise, diff)
 		if progress_from_sunrise > 0:
 			sky_color = Color(DAYTIME_SKY_COLOR*diff + NIGHTTIME_SKY_COLOR*(1-diff))
 	elif absf(progress_from_sunset) < max_diff:
 		diff = (max_diff-absf(progress_from_sunset))/max_diff
 		light_color = Color(SUNSET_COLOR*diff + DEFAULT_SUN_COLOR*(1-diff))
+		sounds.time_till_sunset(progress_from_sunset, diff)
 		if progress_from_sunset < 0:
 			sky_color = Color(NIGHTTIME_SKY_COLOR*diff + DAYTIME_SKY_COLOR*(1-diff))
 	
