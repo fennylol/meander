@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b25m3tgnvh8ob" path="res://object_models/raw_files/tree_medium.glb" id="1_eicvl"]
 [ext_resource type="Material" uid="uid://df0r3lyojer8e" path="res://object_models/object_materials/trunk.tres" id="2_jiay3"]
 [ext_resource type="Material" uid="uid://d10lx4cpe54d1" path="res://object_models/object_materials/foilage.tres" id="3_axaek"]
-[ext_resource type="Material" uid="uid://b8r7j12aae3h0" path="res://object_models/object_materials/blowin_in_da_wind.tres" id="4_jiay3"]
+[ext_resource type="Material" uid="uid://djqcff3hcq21h" path="res://object_models/object_materials/blowin_in_da_wind.tres" id="4_jiay3"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_w4kdc"]
 _surfaces = [{

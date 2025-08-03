@@ -32,6 +32,7 @@ func register_input(input_name: String, keycode: Key):
 
 func _ready():
 	sounds.playing = true
+	sounds.stream_paused = true
 	register_input("jump", KEY_SPACE)
 	register_input("left", KEY_A)
 	register_input("down", KEY_S)
