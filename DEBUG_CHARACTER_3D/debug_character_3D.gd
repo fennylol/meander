@@ -10,6 +10,11 @@ const MAX_SCORE: int = 2
 @onready var camera = $DEBUG_CAMERA
 @onready var fog_shader = $FogVolume
 
+@onready var fall_forward  : RayCast3D = $fall_zone/forward
+@onready var fall_backward : RayCast3D = $fall_zone/backward
+@onready var fall_left     : RayCast3D = $fall_zone/left
+@onready var fall_right    : RayCast3D = $fall_zone/right
+
 var cap = false
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -57,13 +62,28 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor(): velocity.y = JUMP_VELOCITY
 	
+	# ( -x, +x, -y, +y)
 	var input_dir = Input.get_vector("left", "right", "up", "down")
+	
+	# prevent falling off ledges
+	if (input_dir.y < 0 and not fall_forward.is_colliding()): input_dir.y = 0
+	if (input_dir.y > 0 and not fall_backward.is_colliding()): input_dir.y = 0
+	if (input_dir.x < 0 and not fall_left.is_colliding()): input_dir.x = 0
+	if (input_dir.x > 0 and not fall_right.is_colliding()): input_dir.x = 0
+	
+	print("forward:  ", fall_forward.is_colliding())
+	print("backward: ", fall_backward.is_colliding())
+	print("left:     ", fall_left.is_colliding())
+	print("right:    ", fall_right.is_colliding())
+	print(" ")
+	
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+	
 	move_and_slide()
