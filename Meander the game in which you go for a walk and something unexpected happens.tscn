@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=3 uid="uid://crvh2uj0lo2io"]
 
 [ext_resource type="Script" uid="uid://cdirnl1dsl1k8" path="res://meander_the_game_in_which_you_go_for_a_walk_and_something_unexpected_happens.gd" id="1_0vf6b"]
-[ext_resource type="Script" uid="uid://b1uit2ef4a4oq" path="res://DEBUG_CHARACTER_3D/debug_character_3D.gd" id="2_e1kja"]
+[ext_resource type="Script" uid="uid://b1uit2ef4a4oq" path="res://debug_character_3D.gd" id="2_e1kja"]
 [ext_resource type="PackedScene" uid="uid://xi08onbt77yv" path="res://map/meander_05.tscn" id="2_o76sj"]
 [ext_resource type="PackedScene" uid="uid://bdtjmiqx7pfrh" path="res://object_models/scenes_with_colliders/tree_large.tscn" id="3_07f15"]
 [ext_resource type="PackedScene" uid="uid://b7q5hfq5femh" path="res://object_models/scenes_with_colliders/tree_medium.tscn" id="4_dlpvk"]
@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dyjes4ery2xmu" path="res://object_models/scenes_with_colliders/sign.tscn" id="9_ay1ci"]
 [ext_resource type="PackedScene" uid="uid://cshqi0s17unb6" path="res://object_models/scenes_with_colliders/log_small.tscn" id="9_y31hf"]
 [ext_resource type="AudioStream" uid="uid://ci0uf5e6g06lb" path="res://envrionment/sounds/going-on-a-forest-road-gravel-and-grass-6404.mp3" id="14_7d5ad"]
-[ext_resource type="PackedScene" path="res://map/checkpoint.tscn" id="16_dlpvk"]
+[ext_resource type="PackedScene" uid="uid://c7d5g5drbnawn" path="res://map/checkpoint.tscn" id="16_dlpvk"]
 [ext_resource type="PackedScene" uid="uid://d04xs2vja0381" path="res://envrionment/sounds/ambiance_player.tscn" id="17_y31hf"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0vf6b"]

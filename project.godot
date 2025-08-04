@@ -14,7 +14,7 @@ config/name="Meander"
 run/main_scene="res://Meander the game in which you go for a walk and something unexpected happens.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="uid://ciwq3452a6ebm"
 
 [rendering]
 
